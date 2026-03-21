@@ -1,0 +1,55 @@
+common_name,scientific_name,category,edible_part,season,inat_taxon_id,invasive,notes,use_genus,quality
+Chanterelles,Cantharellus,mushroom,whole,summer-fall,47348,FALSE,All true chanterelles edible; golden and cinnabar most common in CT,TRUE,any
+Chicken of the Woods,Laetiporus sulphureus,mushroom,whole,summer-fall,53713,FALSE,Bright orange/yellow bracket fungus on hardwoods; cook thoroughly,FALSE,research
+Hen of the Woods,Grifola frondosa,mushroom,whole,fall,53714,FALSE,Also called maitake; grows at base of oaks,FALSE,research
+Morels,Morchella,mushroom,whole,spring,56830,FALSE,All true morels edible; must cook thoroughly; avoid false morels (Gyromitra),TRUE,any
+Black Trumpet,Craterellus cornucopioides,mushroom,whole,summer-fall,48607,FALSE,Choice edible; hard to spot on forest floor,FALSE,research
+Lion's Mane,Hericium erinaceus,mushroom,whole,summer-fall,1520823,FALSE,White shaggy mass on hardwood trees; no dangerous look-alikes,FALSE,research
+Oyster Mushroom,Pleurotus ostreatus,mushroom,whole,spring-fall,1196165,FALSE,Grows on dead/dying hardwoods; check for angel wings look-alike,FALSE,research
+Giant Puffball,Calvatia gigantea,mushroom,whole,summer-fall,57692,FALSE,Edible only when interior is pure white; slice to check,FALSE,research
+King Bolete,Boletus edulis,mushroom,whole,summer-fall,48701,FALSE,Also called porcini; found under conifers and hardwoods,FALSE,research
+Honey Mushroom,Armillaria mellea,mushroom,whole,fall,55950,FALSE,Must cook well; deadly Galerina marginata is a look-alike,FALSE,research
+Shaggy Mane,Coprinus comatus,mushroom,whole,spring-fall,47392,FALSE,Edible only when young/white; dissolves into ink quickly,FALSE,research
+Hedgehog Mushroom,Hydnum repandum,mushroom,whole,summer-fall,48641,FALSE,No dangerous look-alikes; teeth under cap instead of gills,FALSE,research
+Dryad's Saddle,Cerioporus squamosus,mushroom,whole,spring-summer,940028,FALSE,Also called pheasant back; best when young and tender,FALSE,research
+Pear-shaped Puffball,Apioperdon pyriforme,mushroom,whole,summer-fall,972793,FALSE,Edible when young and white inside; grows on wood,FALSE,research
+Wild Blackberry,Rubus allegheniensis,berry,fruit,summer,82110,FALSE,Abundant along trails and field edges; July-August,FALSE,research
+Black Raspberry,Rubus occidentalis,berry,fruit,summer,125489,FALSE,Ripens before blackberries; dark purple-black fruit,FALSE,research
+Wineberry,Rubus phoenicolasius,berry,fruit,summer,84227,TRUE,Invasive from Asia; distinctive red hairy canes; tart-sweet fruit,FALSE,research
+Blueberries,Vaccinium,berry,fruit,summer,48353,FALSE,Multiple species in CT; all edible; lowbush and highbush most common,TRUE,any
+Huckleberries,Gaylussacia,berry,fruit,summer,48345,FALSE,Similar to blueberry but with larger seeds; acidic soils,TRUE,any
+Elderberry,Sambucus canadensis,berry,fruit,late summer,84300,FALSE,Berries must be cooked; raw berries/leaves/stems are toxic,FALSE,research
+Serviceberries,Amelanchier,berry,fruit,early summer,49230,FALSE,Also called shadbush; all species edible; sweet mild fruit ripens June,TRUE,any
+Red Mulberry,Morus rubra,berry,fruit,summer,54801,FALSE,Native mulberry; fruit resembles elongated blackberry,FALSE,research
+Pawpaw,Asimina triloba,berry,fruit,fall,50897,FALSE,Largest native fruit; tropical custard flavor; southern CT,FALSE,research
+Beach Plum,Prunus maritima,berry,fruit,late summer,64543,FALSE,Coastal species; tart fruit excellent for jam,FALSE,research
+Autumn Olive,Elaeagnus umbellata,berry,fruit,fall,64697,TRUE,Highly invasive; abundant small red speckled berries; tart-sweet,FALSE,research
+Multiflora Rose,Rosa multiflora,berry,fruit (hips),fall,78882,TRUE,Invasive; rose hips high in vitamin C; use for tea/jam,FALSE,research
+American Persimmon,Diospyros virginiana,berry,fruit,fall,83435,FALSE,Must eat fully ripe (after frost); astringent when unripe,FALSE,research
+Ramps,Allium tricoccum,green,leaf/bulb,spring,1457593,FALSE,Wild leek; harvest sustainably (take one leaf and leave bulb),FALSE,any
+Ostrich Fern Fiddlehead,Matteuccia struthiopteris,green,frond,spring,82574,FALSE,Must cook thoroughly; only harvest ostrich fern fiddleheads,FALSE,research
+Garlic Mustard,Alliaria petiolata,green,leaf/root,spring,56061,TRUE,Invasive; leaves garlicky; harvest freely to help control,FALSE,research
+Lamb's Quarters,Chenopodium album,green,leaf,spring-summer,58127,FALSE,Common garden weed; very nutritious; spinach substitute,FALSE,research
+Purslane,Portulaca oleracea,green,leaf/stem,summer,1571188,FALSE,Succulent weed; high in omega-3 fatty acids,FALSE,research
+Wood Sorrel,Oxalis,green,leaf/flower,spring-fall,47758,FALSE,All species edible; lemony flavor; eat in moderation (oxalic acid),TRUE,any
+Common Chickweed,Stellaria media,green,leaf/stem,spring-fall,1087592,FALSE,Mild flavor; abundant in lawns and gardens,FALSE,research
+Dandelion,Taraxacum officinale,green,leaf/root/flower,spring-fall,47602,FALSE,Entire plant edible; leaves best in early spring before flowering,FALSE,research
+Stinging Nettle,Urtica dioica,green,leaf,spring,51884,FALSE,Must cook or dry to neutralize stinging hairs; very nutritious,FALSE,research
+Common Plantain,Plantago major,green,leaf,spring-fall,58961,FALSE,Young leaves edible raw; older leaves better cooked,FALSE,research
+Wild Mint,Mentha canadensis,green,leaf,summer,77991,FALSE,Use fresh or dried for teas; found near water,FALSE,research
+Common Violet,Viola sororia,green,leaf/flower,spring,82816,FALSE,Flowers and young leaves edible; mild flavor,FALSE,research
+Spring Beauty,Claytonia virginica,green,tuber/leaf,spring,117434,FALSE,Small tubers taste like chestnut; do not overharvest,FALSE,research
+Spicebush,Lindera benzoin,green,leaf/berry/twig,spring-fall,54793,FALSE,Berries dried as allspice substitute; twigs for tea,FALSE,research
+Sassafras,Sassafras albidum,green,leaf/root bark,spring-fall,54795,FALSE,File powder from leaves (gumbo); root bark for tea,FALSE,research
+Shagbark Hickory,Carya ovata,nut,nut,fall,54791,FALSE,Distinctive shaggy bark; sweet flavorful nuts,FALSE,research
+Black Walnut,Juglans nigra,nut,nut,fall,54504,FALSE,Hard shell; strong flavor; husks stain hands,FALSE,research
+American Chestnut,Castanea dentata,nut,nut,fall,49186,FALSE,Rare due to blight; sweet edible nuts,FALSE,research
+American Hazelnut,Corylus americana,nut,nut,fall,54770,FALSE,Small native hazelnut; shrub form,FALSE,research
+White Oak,Quercus alba,nut,nut (acorn),fall,54779,FALSE,Acorns lowest in tannin; still require leaching before eating,FALSE,research
+Common Cattail,Typha latifolia,other,shoot/pollen/root,spring-summer,48685,FALSE,Multiple edible parts by season; shoots spring pollen summer roots fall,FALSE,research
+Jerusalem Artichoke,Helianthus tuberosus,other,tuber,fall-winter,122970,FALSE,Also called sunchoke; nutty tuber; can cause gas,FALSE,research
+Common Daylily,Hemerocallis fulva,other,flower/tuber,summer,126583,TRUE,Buds and flowers edible; some people sensitive; confirm ID carefully,FALSE,research
+Japanese Knotweed,Reynoutria japonica,other,shoot,spring,914922,TRUE,Highly invasive; young shoots taste like rhubarb; harvest freely,FALSE,research
+Greater Burdock,Arctium lappa,other,root/stalk,spring-fall,59570,FALSE,Taproot edible first year; peeled stalks also edible,FALSE,research
+Pokeweed,Phytolacca americana,other,shoot,spring,48599,FALSE,ONLY young spring shoots under 8 inches; must boil twice; berries/roots toxic,FALSE,research
+Common Greenbrier,Smilax rotundifolia,other,shoot/tendril,spring,60746,FALSE,Young shoots and tendrils edible; thorny vine,FALSE,research

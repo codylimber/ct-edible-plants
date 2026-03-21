@@ -1,0 +1,180 @@
+---
+title: "Connecticut Wild Edibles Phenology"
+author: "Cody Limber"
+date: today
+format: html
+---
+
+## Goal
+
+Determine the best weeks of the year to observe different wild edible
+species in Connecticut by analyzing iNaturalist observation data.
+Produce a season-period calendar showing when each species is active
+and at peak abundance.
+
+## Setup
+
+```{r setup}
+#| message: false
+library(tidyverse)
+library(rinat)
+library(rgbif)
+library(lubridate)
+library(plotly)
+library(DT)
+library(sf)
+library(tigris)
+library(jsonlite)
+library(yaml)
+
+source("R/phenology_engine.R")
+
+params <- load_params("params.yml")
+
+out_dir <- "outs"
+dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+cache_dir <- file.path(out_dir, "cache")
+```
+
+## Fetch observations
+
+The engine paginates by year and month to stay within API limits (10k for iNat,
+100k for GBIF).
+
+```{r fetch}
+#| cache: true
+obs_raw <- fetch_observations(params, cache_dir = cache_dir)
+cat("Total", params$quality, "-grade observations:", nrow(obs_raw), "\n")
+```
+
+## Clean and summarize
+
+```{r clean}
+cleaned <- clean_observations(obs_raw, min_obs = params$min_obs)
+obs_filtered    <- cleaned$obs
+species_counts  <- cleaned$species_counts
+cat(nrow(species_counts), "species with >=", params$min_obs, "observations\n")
+```
+
+## Assign observations to counties
+
+```{r county-assignment}
+#| cache: true
+county_data <- assign_counties(obs_filtered, "CT",
+                                params$county_year)
+cat("Observations with coordinates:", nrow(county_data$obs_county), "\n")
+cat("Location-hidden:", county_data$location_hidden_count, "\n")
+cat("County distribution:\n")
+count(county_data$obs_county, county, sort = TRUE)
+```
+
+## Rarity tiers and conservation status
+
+```{r rarity}
+species_counts <- assign_rarity(species_counts,
+                                 params$rarity$rare_below,
+                                 params$rarity$uncommon_below)
+cat("Rarity distribution:\n")
+count(species_counts, rarity)
+```
+
+```{r conservation-status}
+#| cache: true
+# Build place pattern for NatureServe lookup
+place_pattern <- "Connecticut|CT"
+if (place_pattern == "") place_pattern <- NULL
+
+cons_data <- fetch_conservation_all(obs_filtered, place_pattern,
+                                    data_source = params$data_source)
+
+species_counts <- species_counts |>
+  select(-any_of(c("taxon_id", "conservation", "concern_level"))) |>
+  left_join(cons_data$taxon_ids, by = "species") |>
+  left_join(cons_data$conservation, by = "taxon_id")
+
+cat("\nConservation status distribution:\n")
+count(species_counts, concern_level)
+```
+
+## Compute weekly phenology
+
+```{r phenology}
+pheno <- compute_phenology(obs_filtered, species_counts, params)
+weekly          <- pheno$weekly
+species_summary <- pheno$species_summary
+
+multi <- species_summary |> filter(period_count > 1)
+if (nrow(multi) > 0) {
+  cat("Multi-", params$terminology$multi_period, " species:\n", sep = "")
+  print(multi |> select(common_name, species, period_count))
+}
+```
+
+## Season period calendar
+
+```{r calendar-plot}
+#| fig-width: 5
+#| fig-height: 20
+cal <- build_calendar_plot(weekly, species_summary, params)
+
+# Show interactive version
+cal$plotly
+
+# Save static version
+ggsave(file.path(out_dir, "wild_edible_calendar.png"),
+       plot = cal$gg, width = 10, height = 18, dpi = 300)
+```
+
+## Species summary table
+
+```{r summary-table}
+summary_out <- build_summary_table(species_summary, params)
+summary_out$dt
+
+write_csv(summary_out$table,
+          file.path(out_dir, "species_season_periods.csv"))
+```
+
+## What's available this week?
+
+```{r whats-active}
+active_now <- whats_active(Sys.Date(), weekly, species_summary, params)
+datatable(active_now,
+          options = list(pageLength = 25, dom = "ft"),
+          caption = paste("What's available the week of",
+                          format(Sys.Date(), "%B %d, %Y")))
+```
+
+```{r whats-active-monthly}
+active_months <- if (!is.null(params$active_months)) {
+  params$active_months[1]:params$active_months[2]
+} else {
+  4:10
+}
+
+monthly_active <- build_monthly_overview(weekly, species_summary, params,
+                                          months = active_months)
+datatable(monthly_active,
+          filter = "top",
+          options = list(pageLength = 25, autoWidth = TRUE),
+          caption = paste("Monthly", tolower("Wild Edible"),
+                          "activity overview"))
+```
+
+## Export JSON
+
+```{r json-export}
+# Export to outs/ for archival and to repo root for the website
+export_json(weekly, species_summary, params, obs_raw,
+            county_data = county_data,
+            out_path = file.path(out_dir, "phenology_data.json"))
+file.copy(file.path(out_dir, "phenology_data.json"), "phenology_data.json",
+          overwrite = TRUE)
+cat("Copied phenology_data.json to repo root for website\n")
+```
+
+## Build info
+
+```{r build-info}
+write_build_info(out_dir, params, obs_raw, nrow(species_counts))
+```

@@ -1,0 +1,45 @@
+site_title: "Connecticut Wild Edibles Phenology"
+site_subtitle: "Best times to forage wild edibles in Connecticut"
+author: "Cody Limber"
+
+data_source: "inat"
+
+taxon_name: "Mixed"
+taxon_common_name: "Wild Edible"
+taxon_id: null
+place_name: "Connecticut"
+place_id: 49
+
+gbif_taxon_key: null
+country_code: null
+
+state_abbrev: "CT"
+county_year: 2020
+place_pattern: "Connecticut|CT"
+
+years: [2015, 2025]
+min_obs: 20
+quality: "research"
+mode: "curated"
+species_list: "species.csv"
+
+terminology:
+  period_name: "season"
+  multi_period: "flushes"
+  group_singular: "species"
+  group_plural: "species"
+  whats_active_verb: "available"
+  show_multi_period: false
+
+rarity:
+  rare_below: 50
+  uncommon_below: 200
+
+color_scale: "inferno"
+plot_height: 1200
+active_months: [3, 11]
+
+header_photo:
+  url: "https://inaturalist-open-data.s3.amazonaws.com/photos/167803878/medium.jpeg"
+  obs_url: "https://www.inaturalist.org/observations/100668174"
+  credit: "Cody Limber"

@@ -1,0 +1,21 @@
+# R
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# Quarto
+/.quarto/
+_freeze/
+
+# Cache (re-fetchable from iNat API)
+outs/cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# renv
+renv/library/
+renv/staging/
+renv/sandbox/
