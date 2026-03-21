@@ -539,6 +539,11 @@ fetch_conservation_all <- function(obs_filtered, place_pattern = NULL,
   }, .progress = TRUE) |>
     dplyr::bind_rows()
 
+  # Ensure columns exist even if no results returned
+  if (nrow(cons_df) == 0) {
+    cons_df <- tibble::tibble(taxon_id = integer(), conservation = character())
+  }
+
   # Add back unresolved species as "Unknown"
   unresolved <- taxon_ids |>
     dplyr::filter(is.na(taxon_id)) |>
@@ -742,6 +747,9 @@ build_calendar_plot <- function(weekly, species_summary, params) {
   month_starts <- as.Date(paste0("2024-", 1:12, "-01"))
   week_starts  <- as.Date("2024-01-01") + (0:51) * 7
 
+  month_breaks <- as.numeric(month_starts)
+  month_labels <- format(month_starts, "%b")
+
   p <- ggplot2::ggplot(
     plot_data,
     ggplot2::aes(x = approx_date, y = plot_label,
@@ -784,12 +792,16 @@ build_calendar_plot <- function(weekly, species_summary, params) {
     )
 
   # Return both ggplot and plotly
-  list(
-    gg = p,
-    plotly = plotly::ggplotly(p, tooltip = "text",
-                              height = params$plot_height) |>
-      plotly::layout(yaxis = list(tickfont = list(size = 9)))
+  pl <- tryCatch(
+    plotly::ggplotly(p, tooltip = "text", height = params$plot_height) |>
+      plotly::layout(yaxis = list(tickfont = list(size = 9))),
+    error = function(e) {
+      message("plotly conversion failed: ", conditionMessage(e),
+              "; falling back to static plot")
+      NULL
+    }
   )
+  list(gg = p, plotly = pl)
 }
 
 

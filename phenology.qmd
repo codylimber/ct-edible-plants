@@ -117,8 +117,8 @@ if (nrow(multi) > 0) {
 #| fig-height: 20
 cal <- build_calendar_plot(weekly, species_summary, params)
 
-# Show interactive version
-cal$plotly
+# Show interactive version (falls back to static if plotly fails)
+if (!is.null(cal$plotly)) cal$plotly else cal$gg
 
 # Save static version
 ggsave(file.path(out_dir, "wild_edible_calendar.png"),

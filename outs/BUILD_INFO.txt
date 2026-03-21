@@ -1,0 +1,7 @@
+site: Connecticut Wild Edibles Phenology
+taxon: Mixed (id:  )
+place: Connecticut (id: 49 )
+git_hash: ce10494
+date: 2026-03-21 17:29:01.440353
+observations: 18469
+species_plotted: 43
